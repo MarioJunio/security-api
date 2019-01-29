@@ -1,15 +1,10 @@
 package br.com.security.rest;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
-import javax.ws.rs.core.Response;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
-
 import br.com.security.repository.CheckinRepository;
 import br.com.security.repository.ClienteRepository;
 import br.com.security.rest.stub.AppCliente;
 import br.com.security.rest.stub.AppClienteCheckin;
-import br.com.security.rest.stub.ResponseSms;
 import br.com.security.rest.stub.SyncAppClienteCheckin;
 import br.com.security.service.AuthCode;
 import br.com.security.sms.Zenvia;
@@ -70,20 +62,11 @@ public class AppClientesController {
 
 				@Override
 				public void run() {
-					Response responseSms = zenvia.sendSms(AppUtils.getOnlyDigits(appClienteTmp.getTelefone1()),
-							String.format("%s", appClienteTmp.getCode()));
-
-					int statusCode = responseSms.getStatus();
-
-					if (responseSms != null && responseSms.getStatus() == 200 && (statusCode == 0 || statusCode == 2)) {
-						System.out.println("Enviou o SMS");
-					} else {
-						System.out.println("SMS não enviado: " + statusCode);
-					}
+					zenvia.sendSms(AppUtils.getOnlyDigits(appClienteTmp.getTelefone1()), String.format("%s", appClienteTmp.getCode()));
 				}
 
 			});
-			
+
 			sendSMSThread.start();
 
 			return ResponseEntity.ok(appCliente);

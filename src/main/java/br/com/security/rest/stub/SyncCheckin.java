@@ -14,6 +14,7 @@ public class SyncCheckin {
 	private double longitude;
 	private CheckinStatus status;
 	private String descricao;
+	private String foto;
 
 	public SyncCheckin() {
 		super();
@@ -30,6 +31,20 @@ public class SyncCheckin {
 		this.longitude = longitude;
 		this.status = status;
 		this.descricao = descricao;
+	}
+
+	public SyncCheckin(Long id, Long funcionarioId, Long cliente, Date data, double latitude, double longitude, CheckinStatus status,
+			String descricao, String foto) {
+		super();
+		this.id = id;
+		this.funcionarioId = funcionarioId;
+		this.cliente = cliente;
+		this.data = data;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.status = status;
+		this.descricao = descricao;
+		this.foto = foto;
 	}
 
 	public Long getId() {
@@ -96,10 +111,18 @@ public class SyncCheckin {
 		this.descricao = descricao;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	@Override
 	public String toString() {
 		return "SyncCheckin [id=" + id + ", funcionarioId=" + funcionarioId + ", cliente=" + cliente + ", data=" + data + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", status=" + status + ", descricao=" + descricao + "]";
+				+ ", longitude=" + longitude + ", status=" + status + ", descricao=" + descricao + ", foto=" + foto + "]";
 	}
 
 }

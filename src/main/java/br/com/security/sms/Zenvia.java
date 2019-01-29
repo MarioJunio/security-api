@@ -21,7 +21,7 @@ public class Zenvia {
 		// final SimpleDateFormat dateFormat = new
 		// SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
-		System.out.printf("Enviando SMS para [Telefone: %s, %s]\n", phone, message);
+//		System.out.printf("Enviando SMS para [Telefone: %s, %s]\n", phone, message);
 
 		Client client = ClientBuilder.newClient();
 

@@ -49,6 +49,8 @@ public class CheckinController {
 	public ResponseEntity<Long> receberCheckins(@RequestBody List<SyncCheckin> checkins) {
 		Long timeSync = 0l;
 
+		System.out.println(checkins.toString());
+		
 		try {
 			final List<ClienteSms> clientsSms = new ArrayList<ClienteSms>();
 
@@ -95,10 +97,10 @@ public class CheckinController {
 			Response response = zenvia.sendSms(AppUtils.getOnlyDigits(cs.getCelular()),
 					String.format("Inspeção realizada %s as %s Observação: %s - Duvidas: %s", text, horario, cs.getDescricao(), "(34) 3819-4644"));
 
-			System.out.println("status: " + response.getStatus());
-			System.out.println("headers: " + response.getHeaders());
-			System.out.println("body:" + response.readEntity(String.class));
-			System.out.println();
+//			System.out.println("status: " + response.getStatus());
+//			System.out.println("headers: " + response.getHeaders());
+//			System.out.println("body:" + response.readEntity(String.class));
+//			System.out.println();
 
 		}
 

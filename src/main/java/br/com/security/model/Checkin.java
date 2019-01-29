@@ -35,9 +35,9 @@ public class Checkin implements Serializable {
 	private CheckinStatus status;
 	private String descricao;
 	private Long timeSync;
+	private String foto;
 
 	public Checkin() {
-
 	}
 
 	public Checkin(SyncCheckin sc, Long timeSync) {
@@ -48,6 +48,7 @@ public class Checkin implements Serializable {
 		setLongitude(sc.getLongitude());
 		setStatus(sc.getStatus());
 		setDescricao(sc.getDescricao());
+		setFoto(sc.getFoto());
 		setTimeSync(timeSync);
 	}
 
@@ -130,14 +131,6 @@ public class Checkin implements Serializable {
 		this.descricao = descricao;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
 	@Column(name = "time_sync")
 	public Long getTimeSync() {
 		return timeSync;
@@ -145,6 +138,16 @@ public class Checkin implements Serializable {
 
 	public void setTimeSync(Long timeSync) {
 		this.timeSync = timeSync;
+	}
+
+	@Lob
+	@Column
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	@Override
@@ -165,9 +168,17 @@ public class Checkin implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
 	public String toString() {
 		return "Checkin [id=" + id + ", empregado=" + empregado + ", cliente=" + cliente + ", data=" + data + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", status=" + status + ", descricao=" + descricao + ", timeSync=" + timeSync + "]";
+				+ ", longitude=" + longitude + ", status=" + status + ", descricao=" + descricao + ", timeSync=" + timeSync + ", foto=" + foto + "]";
 	}
 
 }

@@ -22,9 +22,7 @@ public interface CheckinRepository extends JpaRepository<Checkin, Long> {
 	@Query("select new br.com.security.rest.stub.ClienteSms(b.nome, a.data, a.descricao, b.telefone1) from Checkin a join a.cliente b where a.id = :id")
 	public ClienteSms findBySms(@Param("id") Long id);
 	
-	
-	
-	@Query("select new br.com.security.rest.stub.AppClienteCheckin(a.id, b.nome, a.data, a.status, a.descricao) from Checkin a join a.empregado b where a.cliente.id = :id and a.timeSync > :time_sync")
+	@Query("select new br.com.security.rest.stub.AppClienteCheckin(a.id, b.nome, a.data, a.status, a.descricao, a.foto <> null) from Checkin a join a.empregado b where a.cliente.id = :id and a.timeSync > :time_sync")
 	public List<AppClienteCheckin> findByCliente(@Param("id") Long id, @Param("time_sync") Long timeSync); 
 	
 	

@@ -11,14 +11,16 @@ public class AppClienteCheckin {
 	private Date data;
 	private CheckinStatus status;
 	private String descricao;
+	private boolean foto;
 
-	public AppClienteCheckin(Long id, String funcionario, Date data, CheckinStatus status, String descricao) {
+	public AppClienteCheckin(Long id, String funcionario, Date data, CheckinStatus status, String descricao, boolean foto) {
 		super();
 		this.id = id;
 		this.funcionario = funcionario;
 		this.data = data;
 		this.status = status;
 		this.descricao = descricao;
+		this.foto = foto;
 	}
 
 	public Long getId() {
@@ -61,6 +63,14 @@ public class AppClienteCheckin {
 		this.descricao = descricao;
 	}
 
+	public boolean isFoto() {
+		return foto;
+	}
+
+	public void setFoto(boolean foto) {
+		this.foto = foto;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,7 +99,7 @@ public class AppClienteCheckin {
 	@Override
 	public String toString() {
 		return "AppClienteCheckin [id=" + id + ", funcionario=" + funcionario + ", data=" + data + ", status=" + status + ", descricao=" + descricao
-				+ "]";
+				+ ", foto=" + foto + "]";
 	}
 
 }

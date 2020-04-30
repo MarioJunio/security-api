@@ -2,25 +2,29 @@ package br.com.security.rest.stub;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.security.model.CheckinStatus;
 
 public class AppClienteCheckin {
 
 	private Long id;
 	private String funcionario;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", locale = "pt-BR", timezone = "America/Sao_Paulo")
 	private Date data;
+	
 	private CheckinStatus status;
 	private String descricao;
 	private boolean foto;
 
-	public AppClienteCheckin(Long id, String funcionario, Date data, CheckinStatus status, String descricao, boolean foto) {
+	public AppClienteCheckin(Long id, String funcionario, Date data, CheckinStatus status, String descricao) {
 		super();
 		this.id = id;
 		this.funcionario = funcionario;
 		this.data = data;
 		this.status = status;
 		this.descricao = descricao;
-		this.foto = foto;
 	}
 
 	public Long getId() {

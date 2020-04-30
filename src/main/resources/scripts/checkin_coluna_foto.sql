@@ -1,1 +1,0 @@
-alter table checkin add column foto longtext

@@ -23,7 +23,7 @@ import br.com.security.repository.EmpregadoRecoveryCodeRepository;
 import br.com.security.repository.EmpregadoRepository;
 import br.com.security.rest.stub.ResponseSms;
 import br.com.security.service.AuthCode;
-import br.com.security.sms.Zenvia;
+import br.com.security.service.sms.Zenvia;
 import br.com.security.utils.AppUtils;
 
 @RestController

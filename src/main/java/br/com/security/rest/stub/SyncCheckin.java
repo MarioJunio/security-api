@@ -2,14 +2,23 @@ package br.com.security.rest.stub;
 
 import java.util.Date;
 
+import org.springframework.util.StringUtils;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.com.security.model.CheckinStatus;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SyncCheckin {
 
 	private Long id;
 	private Long funcionarioId;
 	private Long cliente;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", locale = "pt-BR", timezone = "America/Sao_Paulo")
 	private Date data;
+
 	private double latitude;
 	private double longitude;
 	private CheckinStatus status;
@@ -35,15 +44,7 @@ public class SyncCheckin {
 
 	public SyncCheckin(Long id, Long funcionarioId, Long cliente, Date data, double latitude, double longitude, CheckinStatus status,
 			String descricao, String foto) {
-		super();
-		this.id = id;
-		this.funcionarioId = funcionarioId;
-		this.cliente = cliente;
-		this.data = data;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.status = status;
-		this.descricao = descricao;
+		this(id, funcionarioId, cliente, data, latitude, longitude, status, descricao);
 		this.foto = foto;
 	}
 
@@ -122,7 +123,8 @@ public class SyncCheckin {
 	@Override
 	public String toString() {
 		return "SyncCheckin [id=" + id + ", funcionarioId=" + funcionarioId + ", cliente=" + cliente + ", data=" + data + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", status=" + status + ", descricao=" + descricao + ", foto=" + foto + "]";
+				+ ", longitude=" + longitude + ", status=" + status + ", descricao=" + descricao + ", foto="
+				+ (StringUtils.isEmpty(foto) ? "Nao possui" : "Possui") + "]";
 	}
 
 }

@@ -35,7 +35,6 @@ public class Checkin implements Serializable {
 	private CheckinStatus status;
 	private String descricao;
 	private Long timeSync;
-	private String foto;
 
 	public Checkin() {
 	}
@@ -48,7 +47,6 @@ public class Checkin implements Serializable {
 		setLongitude(sc.getLongitude());
 		setStatus(sc.getStatus());
 		setDescricao(sc.getDescricao());
-		setFoto(sc.getFoto());
 		setTimeSync(timeSync);
 	}
 
@@ -140,16 +138,6 @@ public class Checkin implements Serializable {
 		this.timeSync = timeSync;
 	}
 
-	@Lob
-	@Column
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -178,7 +166,7 @@ public class Checkin implements Serializable {
 	@Override
 	public String toString() {
 		return "Checkin [id=" + id + ", empregado=" + empregado + ", cliente=" + cliente + ", data=" + data + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", status=" + status + ", descricao=" + descricao + ", timeSync=" + timeSync + ", foto=" + foto + "]";
+				+ ", longitude=" + longitude + ", status=" + status + ", descricao=" + descricao + ", timeSync=" + timeSync + "]";
 	}
 
 }
